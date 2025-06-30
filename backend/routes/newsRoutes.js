@@ -13,13 +13,13 @@ router.get('/', protect, async (req, res) => {
         console.log(categories,"categories")
 
 
-        // const news = await fetchNews();
-        // allNews.push(...news);
+        const news = await fetchNews();
+        allNews.push(...news);
 
-        for (const category of categories) {
-            const news = await fetchNews(category);
-            allNews.push(...news);
-        }
+        // // for (const category of categories) {
+        //     const news = await fetchNews(category);
+        //     allNews.push(...news);
+        // }
 
         res.json(allNews);
     } catch (err) {
