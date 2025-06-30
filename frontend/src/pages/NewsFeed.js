@@ -10,14 +10,10 @@ const NewsFeed = () => {
 console.log("🔑 Token being sent:", localStorage.getItem('token'));
 ;
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/news`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+        const res = await axios.get("https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=f831474618a243dfa53a109be7e5e877");
 
         console.log("Fetched news:", res.data);
-        setArticles(res.data);
+        setArticles(res?.data?.articles);
       } catch (err) {
         console.error("Error fetching news", err.response?.data || err.message);
       }
